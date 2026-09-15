@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import Sun from '../components/Sun.astro';
+import SecHead from '../components/SecHead.astro';
+import Verdicts from '../components/Verdicts.astro';
+import { getCollection } from 'astro:content';
+import { SITE, IDENT, IDENT_LEAD, IDENT_REST, PERSON_ID, iso } from '../lib/site';
+import { WORK } from '../lib/work';
+
+const entries = (await getCollection('log')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const V = { automate: 'Automate', assist: 'Assist', leave: 'Leave alone' } as const;
+const jsonld = [{ '@type': 'ProfilePage', '@id': `${SITE}/#profilepage`, url: `${SITE}/`, mainEntity: { '@id': PERSON_ID }, dateModified: '2026-09-15' }];
+---
+<Base title="Arya Pradana" description={IDENT} path="/" jsonld={jsonld}>
+  <section class="hero g" aria-labelledby="h1">
+    <div class="floor" aria-hidden="true"></div>
+    <figure class="art plate" style="margin:0;--ht-dir:left">
+      <img src="/img/hero.webp" width="1600" height="1066" alt="Arya Pradana in chrome headphones, painted as a 1979 paperback cover, a striped sun setting over a grid behind him." fetchpriority="high" />
+    </figure>
+    <div class="copy">
+      <p class="why rise"><Sun id="h" /> Why? Think further.</p>
+      <p class="since rise">Building software companies since <b>2008</b></p>
+      <h1 id="h1" class="rise">Four people doing what <em class="sun-text">eighteen</em> used&nbsp;to.</h1>
+      <p class="ident rise"><b>{IDENT_LEAD}</b> {IDENT_REST}</p>
+      <div class="routes rise"><a class="btn sun" href="/hire">Hire me</a><a class="btn" href="/about">Read the record</a></div>
+    </div>
+  </section>
+
+  <div class="strip" role="list" aria-label="At a glance">
+    <div role="listitem"><div class="v">2008</div><div class="k">First company, at university</div></div>
+    <div role="listitem"><div class="v">5</div><div class="k">Companies built or run</div></div>
+    <div role="listitem"><div class="v">50</div><div class="k">People at DOT, as COO</div></div>
+    <div role="listitem"><div class="v">18 → 12 → <i>4</i></div><div class="k">Elux Space, 2023 → 2026</div></div>
+    <div role="listitem"><div class="v">Jogja</div><div class="k">Yogyakarta, Indonesia</div></div>
+  </div>
+
+  <section class="g" aria-labelledby="h-method">
+    <div class="sec">
+      <SecHead coord="01 · Method" title="Every piece of work gets one of three verdicts" aside="The whole practice<br>in one question" id="h-method" />
+      <div class="sec-body">
+        <p class="lede span-7">Most owners ask <b>“what can AI do for us?”</b> That question has no edges, so the answer is always “everything,” and the project dies of scope. I ask a narrower one: for <em>this</em> piece of work, which pile does it belong in? <a href="/method" style="color:var(--sun-1)">How the three verdicts work →</a></p>
+      </div>
+      <Verdicts />
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-record">
+    <div class="sec">
+      <SecHead coord="02 · Record" title="Eighteen years, two sides" aside="2008 → now" id="h-record" />
+      <div class="sec-body">
+        <div class="span-6 prose">
+          <p>Started a hosting and software company in the third year of university. Ran a fifty-person company as COO for five years — sales, funding, then admin, legal, finance and HR, then the business model. Left it in 2020. Built a video production house. Founded a design studio in 2022, grew it to eighteen, and then took it down to four on purpose — with revenue unchanged through the last step.</p>
+          <p><a class="btn" href="/about">The full record</a></p>
+        </div>
+        <div class="span-4" style="align-self:end">
+          <div class="curve"><span>18</span><span class="arrow">→</span><span>12</span><span class="arrow">→</span><span class="four">4</span></div>
+          <p class="curve-note">Elux Space headcount, 2023 → 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-log">
+    <div class="sec">
+      <SecHead coord="03 · Log" title="Verdicts, with the numbers attached" aside="One a week, at most" id="h-log" />
+      <div class="list">
+        {entries.map((e) => (
+          <div class="row">
+            <span class="id">{iso(e.data.date)}</span>
+            <a class="name" href={`/log/${e.id}`}>{e.data.title}<small>{e.data.source}</small></a>
+            <p class="desc">{e.data.summary}</p>
+            <span class="meta"><span class={`pill v-${e.data.verdict}`}>{V[e.data.verdict]}</span> {e.data.draft && <span class="pill draft">Draft</span>}</span>
+          </div>
+        ))}
+      </div>
+      <div class="sec-body"><p class="lede span-7">Every entry follows the same eight fields, and the rule is simple: <b>no number, no entry.</b> <a href="/log" style="color:var(--sun-1)">The log →</a></p></div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-work">
+    <div class="sec">
+      <SecHead coord="04 · Work" title="Built, shipped, still running" aside="Own builds + the studio" id="h-work" />
+      <div class="list">
+        {WORK.slice(0, 3).map((w) => (
+          <div class="row">
+            <span class="id">{w.year}</span>
+            <a class="name" href={w.url}>{w.name}<small>{w.kind}</small></a>
+            <p class="desc">{w.desc}</p>
+            <span class="meta">{w.meta}</span>
+          </div>
+        ))}
+      </div>
+      <div class="sec-body"><p class="lede span-7"><a href="/work" style="color:var(--sun-1)">All work, including the studio’s →</a></p></div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-hire">
+    <div class="sec">
+      <SecHead coord="05 · Hire" title="Two ways in" aside="One is me.<br>One is the studio." id="h-hire" />
+      <div class="offers">
+        <div class="offer me"><span class="kick">Hire me</span><div style="display:grid;gap:14px"><h3>An AI decision audit, for owners</h3><p>I go through your actual work and sort it into the three piles, with the reasoning written down so it survives me leaving the room.</p><p class="price">From <b>IDR 10,000,000</b></p></div><a class="btn sun" href="/hire">How it works</a></div>
+        <div class="offer team"><span class="kick">Hire the team</span><div style="display:grid;gap:14px"><h3>Product and UI/UX design, by Elux Space</h3><p>The four-person studio the record describes. Scope, quotes and the work itself live on the studio’s own site.</p><p class="price">Quoted per project</p></div><a class="btn" href="https://elux.space">elux.space</a></div>
+      </div>
+    </div>
+  </section>
+</Base>

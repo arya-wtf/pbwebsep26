@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+import SecHead from '../components/SecHead.astro';
+import Verdicts from '../components/Verdicts.astro';
+import Fields from '../components/Fields.astro';
+import { SITE, PERSON_ID, faq } from '../lib/site';
+
+const title = 'Three Verdicts — what AI should automate, assist, or leave alone';
+const description = 'A method for owners deciding what AI should do in their business: sort every piece of work into automate, assist, or leave alone. By Arya Pradana.';
+const jsonld = [
+  { '@type': 'Article', '@id': `${SITE}/method#article`, headline: 'Every piece of work gets one of three verdicts', author: { '@id': PERSON_ID }, datePublished: '2026-09-15', dateModified: '2026-09-15', url: `${SITE}/method`, inLanguage: 'en' },
+  faq([
+    ['What is the difference between automate and assist?', "Automate removes the person from the loop; assist keeps the person's judgment and uses the machine to draft, check and speed up. Most failed AI projects tried to automate work that should have been assisted."],
+    ['Why leave anything alone?', 'Because some work is the reason the client pays you — the relationship, the taste, the accountability. Automating it removes the value rather than the cost.'],
+    ['Do you use AI to write the verdicts?', 'To draft, yes. The verdict itself — the decision and the refusal — is written by a person. Automate the work, never the voice.'],
+  ]),
+];
+---
+<Base title={title} description={description} path="/method" jsonld={jsonld}>
+  <section class="phero g" aria-labelledby="h1">
+    <Plate src="/img/method.webp" alt="Three chrome spheres of different sizes on a dark grid, the smallest cracked open with warm light inside." eager />
+    <div class="head"><span class="kick sun">The method</span><h1 id="h1">What should AI automate? Three verdicts.</h1>
+      <p class="lede">Most owners ask <b>“what can AI do for us?”</b> That question has no edges, so the answer is always “everything,” and the project dies of scope. The narrower question is the useful one: for <em>this</em> piece of work, which pile does it belong in?</p></div>
+    <div class="side" style="grid-column:9/13">One question,<br />asked on every task</div>
+  </section>
+
+  <section class="g" aria-labelledby="h-three">
+    <div class="sec">
+      <SecHead coord="01" title="The three piles" aside="In order of how often<br>people get them wrong" id="h-three" />
+      <Verdicts detailed />
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-why">
+    <div class="sec">
+      <SecHead coord="02" title="Why the third pile matters most" aside="The uncomfortable part" id="h-why" />
+      <div class="sec-body">
+        <div class="prose span-7">
+          <p>Every tool vendor is paid to grow the first pile. Nobody is paid to grow the third. So in most small companies the pressure runs one way, and the work that made the company worth hiring gets automated first — because it’s visible, and because it looks expensive.</p>
+          <p>The studio I run went from eighteen people to four with revenue unchanged through the last step. That wasn’t because we automated the most. It was because we were specific about what we <b>refused</b> to automate, and put the remaining people there.</p>
+          <p>That’s why every verdict on this site has a field called <b>“what I refused to automate.”</b> A verdict without a refusal is a sales pitch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-fields">
+    <div class="sec">
+      <SecHead coord="03" title="How a verdict is written" aside="Eight fields, no exceptions" id="h-fields" />
+      <Fields />
+      <div class="sec-body"><p class="rule-line span-10">No number, <i>no entry.</i> No refusal named, <i>entry unfinished.</i></p></div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-faq">
+    <div class="sec">
+      <SecHead coord="04" title="Questions" aside="Asked often enough<br>to answer once" id="h-faq" />
+      <div class="faq">
+        <details open><summary>What is the difference between automate and assist?</summary><div class="a">Automate removes the person from the loop. Assist keeps the person’s judgment and uses the machine to draft, check and speed up. Most failed AI projects tried to automate work that should have been assisted — the output looked fine until someone’s name was on it.</div></details>
+        <details><summary>Why leave anything alone?</summary><div class="a">Because some work is the reason the client pays you — the relationship, the taste, the accountability. Automating it removes the value, not the cost. The third pile is where the business actually is.</div></details>
+        <details><summary>Do you use AI to write the verdicts?</summary><div class="a">To draft, yes. The verdict itself — the decision and the refusal — is written by a person. Automate the work, never the voice.</div></details>
+        <details><summary>Does this apply outside design studios?</summary><div class="a">The three piles do. The specific verdicts don’t transfer — a logistics company’s third pile looks nothing like a studio’s. That’s why an audit goes through <em>your</em> work, not a template.</div></details>
+      </div>
+    </div>
+  </section>
+</Base>

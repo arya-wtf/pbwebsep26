@@ -1,0 +1,660 @@
+<title>Arya Pradana</title>
+<meta name="description" content="Founder of Elux Space, an AI-native design studio in Yogyakarta. I help owners decide what AI should automate, what it should assist, and what it should never touch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* ============================================================
+   arya.wtf — "the back of a 1960 Blue Note sleeve"
+   grid: 12 col · baseline 8px · one spot colour
+   ============================================================ */
+:root{
+  color-scheme:dark;
+  --bg:#061A3E;
+  --bg-2:#0B2554;
+  --cobalt:#014AA7;
+  --ink:#F2ECE2;
+  --ink-dim:rgba(242,236,226,.66);
+  --ink-mute:rgba(242,236,226,.42);
+  --line:rgba(242,236,226,.16);
+  --line-strong:rgba(242,236,226,.38);
+  --accent:#F26A2E;
+  --accent-ink:#0B1A3A;
+  --dot:#F2ECE2;
+  --font-display:"Archivo","Franklin Gothic Medium","Arial Narrow",sans-serif;
+  --font-body:"Newsreader","Iowan Old Style","Georgia",serif;
+  --font-mono:"JetBrains Mono","SFMono-Regular","Menlo",monospace;
+  --b:8px;
+  --measure:64ch;
+  --grain-blend:overlay;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --bg:#EEF0F4;
+    --bg-2:#E1E5EE;
+    --cobalt:#014AA7;
+    --ink:#061A3E;
+    --ink-dim:rgba(6,26,62,.70);
+    --ink-mute:rgba(6,26,62,.48);
+    --line:rgba(6,26,62,.16);
+    --line-strong:rgba(6,26,62,.40);
+    --accent:#D9521C;
+    --accent-ink:#F2ECE2;
+    --dot:#061A3E;
+    --grain-blend:multiply;
+  }
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#EEF0F4;
+  --bg-2:#E1E5EE;
+  --cobalt:#014AA7;
+  --ink:#061A3E;
+  --ink-dim:rgba(6,26,62,.70);
+  --ink-mute:rgba(6,26,62,.48);
+  --line:rgba(6,26,62,.16);
+  --line-strong:rgba(6,26,62,.40);
+  --accent:#D9521C;
+  --accent-ink:#F2ECE2;
+  --dot:#061A3E;
+  --grain-blend:multiply;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:18px;
+  line-height:1.6;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+  hanging-punctuation:first last;
+}
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:60;
+  opacity:.07;mix-blend-mode:var(--grain-blend);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--font-display);font-weight:800;text-wrap:balance;letter-spacing:-.02em}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.kick{
+  font-family:var(--font-mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* ---- page grid ---- */
+.page{
+  max-width:1360px;margin:0 auto;
+  padding-inline:clamp(16px,4vw,56px);
+  padding-block:0 calc(var(--b)*14);
+}
+.g{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,2vw,24px)}
+
+/* ---- masthead ---- */
+.mast{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding-block:calc(var(--b)*3) calc(var(--b)*2);
+  border-bottom:1px solid var(--line-strong);
+}
+.mast .brand{font-family:var(--font-display);font-weight:900;font-stretch:118%;font-size:20px;letter-spacing:-.01em;text-transform:uppercase}
+.mast .brand span{color:var(--accent)}
+.mast nav{display:flex;gap:clamp(14px,2.4vw,32px);flex-wrap:wrap}
+.mast nav a{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid transparent;padding-bottom:2px}
+.mast nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* ---- hero ---- */
+.hero{
+  position:relative;
+  padding-block:calc(var(--b)*6) calc(var(--b)*8);
+  align-items:end;
+}
+.hero .plate{
+  grid-column:7 / 13;grid-row:1;
+  background:var(--cobalt);
+  aspect-ratio:4/5;max-width:100%;
+  position:relative;overflow:hidden;
+}
+.hero .plate img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.hero .plate .edge{
+  position:absolute;left:12px;bottom:10px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(242,236,226,.75);
+}
+.hero .copy{
+  grid-column:1 / 9;grid-row:1;
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;gap:calc(var(--b)*3);
+  padding-bottom:calc(var(--b)*2);
+}
+.hero h1{
+  font-size:clamp(40px,7.2vw,104px);
+  line-height:.92;
+  font-stretch:112%;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-.035em;
+  color:var(--ink);
+  max-width:16ch;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .why{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)
+}
+.hero .why::before{content:"";width:36px;height:2px;background:var(--accent)}
+.hero .ident{
+  max-width:44ch;font-size:clamp(18px,1.6vw,21px);line-height:1.5;
+  color:var(--ink-dim);
+  background:var(--bg);
+  padding:calc(var(--b)*2) calc(var(--b)*2) calc(var(--b)*2) 0;
+  width:fit-content;
+}
+.hero .ident b{color:var(--ink);font-weight:500}
+
+/* ---- receipt strip ---- */
+.receipt{
+  border-top:1px solid var(--line-strong);
+  border-bottom:1px solid var(--line-strong);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:0;
+}
+.receipt > div{
+  padding:calc(var(--b)*2) calc(var(--b)*2) calc(var(--b)*2) 0;
+  border-right:1px solid var(--line);
+  margin-right:calc(var(--b)*2);
+}
+.receipt > div:last-child{border-right:0;margin-right:0}
+.receipt .v{font-family:var(--font-display);font-weight:900;font-stretch:112%;font-size:clamp(24px,2.6vw,36px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.receipt .v i{font-style:normal;color:var(--accent)}
+.receipt .k{margin-top:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ---- sections ---- */
+section{padding-block:calc(var(--b)*10) 0}
+.sec-head{
+  grid-column:1 / 13;
+  display:grid;grid-template-columns:subgrid;
+  align-items:end;
+  border-bottom:1px solid var(--line-strong);
+  padding-bottom:calc(var(--b)*2);
+  margin-bottom:calc(var(--b)*4);
+}
+.sec-head .kick{grid-column:1 / 3}
+.sec-head h2{grid-column:3 / 10;font-size:clamp(28px,3.6vw,46px);line-height:.98;font-stretch:112%;text-transform:uppercase}
+.sec-head .aside{grid-column:10 / 13;font-family:var(--font-mono);font-size:12px;color:var(--ink-mute);text-align:right;line-height:1.5}
+.lede{grid-column:3 / 10;max-width:var(--measure);font-size:20px;line-height:1.55;color:var(--ink-dim)}
+.lede b{color:var(--ink);font-weight:500}
+
+/* ---- verdicts ---- */
+.verdicts{grid-column:1 / 13;display:grid;grid-template-columns:subgrid;row-gap:0;margin-top:calc(var(--b)*5)}
+.verdict{
+  grid-column:span 4;
+  border-top:2px solid var(--line-strong);
+  padding-top:calc(var(--b)*2);
+  padding-right:calc(var(--b)*3);
+  display:grid;gap:10px;
+}
+.verdict[data-v="automate"]{border-top-color:var(--accent)}
+.verdict[data-v="assist"]{border-top-color:var(--cobalt)}
+.verdict[data-v="leave"]{border-top-color:var(--ink)}
+.verdict .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.verdict[data-v="automate"] .tag{color:var(--accent)}
+.verdict[data-v="assist"] .tag{color:#5C8DF0}
+.verdict[data-v="leave"] .tag{color:var(--ink)}
+.verdict h3{font-size:clamp(24px,2.4vw,32px);line-height:1;font-stretch:110%;text-transform:uppercase}
+.verdict p{font-size:17px;line-height:1.55;color:var(--ink-dim);max-width:34ch}
+
+/* ---- record / track list ---- */
+.record{grid-column:1 / 13;display:grid;grid-template-columns:subgrid;row-gap:calc(var(--b)*6)}
+.side{grid-column:1 / 13;display:grid;grid-template-columns:subgrid}
+.side .label{
+  grid-column:1 / 3;
+  font-family:var(--font-display);font-weight:900;font-stretch:120%;font-size:clamp(44px,6vw,88px);line-height:.85;letter-spacing:-.04em;text-transform:uppercase;color:var(--ink);
+  align-self:start;
+}
+.side .label small{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;font-weight:500;color:var(--ink-mute);margin-top:12px;letter-spacing:.14em}
+.tracks{grid-column:3 / 13;border-top:1px solid var(--line-strong)}
+.track{
+  display:grid;
+  grid-template-columns:minmax(96px,120px) minmax(0,1fr) minmax(0,1.4fr);
+  gap:0 clamp(12px,2vw,28px);
+  padding:calc(var(--b)*2) 0;
+  border-bottom:1px solid var(--line);
+  align-items:baseline;
+}
+.track:hover{background:linear-gradient(90deg,var(--bg-2),transparent 60%)}
+.track .yr{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--ink-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.track .yr.now{color:var(--accent)}
+.track .who{font-family:var(--font-display);font-weight:800;font-stretch:108%;font-size:clamp(18px,1.7vw,22px);line-height:1.1;letter-spacing:-.01em}
+.track .who small{display:block;font-family:var(--font-mono);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-top:6px}
+.track .what{font-size:17px;line-height:1.5;color:var(--ink-dim);max-width:52ch}
+.track .what b{color:var(--ink);font-weight:500}
+.track .what .pending{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px dashed var(--accent);padding:1px 6px;border-radius:2px}
+.track.head{
+  grid-template-columns:minmax(96px,120px) minmax(0,1fr) minmax(0,1.4fr);
+  align-items:end;
+  padding:calc(var(--b)*3) 0 calc(var(--b)*2);
+}
+.track.head .who{font-size:clamp(28px,3.2vw,44px);font-stretch:114%;text-transform:uppercase;letter-spacing:-.03em}
+.curve{
+  display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  font-family:var(--font-display);font-weight:900;font-stretch:115%;letter-spacing:-.03em;
+  font-size:clamp(34px,4.4vw,64px);line-height:1;font-variant-numeric:tabular-nums;
+}
+.curve .arrow{color:var(--ink-mute);font-weight:400;font-stretch:80%}
+.curve .four{color:var(--accent)}
+.curve-note{margin-top:10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:var(--ink-mute);line-height:1.6}
+
+/* ---- log ---- */
+.log{grid-column:1 / 13;display:grid;grid-template-columns:subgrid;row-gap:calc(var(--b)*4)}
+.log .lanes{grid-column:1 / 13;display:grid;grid-template-columns:subgrid}
+.lane{grid-column:span 6;border-top:1px solid var(--line-strong);padding-top:calc(var(--b)*2);padding-right:calc(var(--b)*4);display:grid;gap:12px;align-content:start}
+.lane h3{font-size:clamp(22px,2.2vw,30px);line-height:1;font-stretch:110%;text-transform:uppercase}
+.lane p{color:var(--ink-dim);font-size:17px;line-height:1.55;max-width:44ch}
+.fields{
+  grid-column:1 / 13;
+  display:grid;grid-template-columns:subgrid;
+  border-top:1px solid var(--line-strong);
+}
+.fields .kick{grid-column:1 / 3;padding-top:calc(var(--b)*2)}
+.fields dl{
+  grid-column:3 / 13;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));
+  gap:0;margin:0;
+}
+.fields dl > div{padding:calc(var(--b)*2) calc(var(--b)*2) calc(var(--b)*2) 0;border-bottom:1px solid var(--line)}
+.fields dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.fields dd{margin:0;font-family:var(--font-display);font-weight:700;font-stretch:106%;font-size:17px;line-height:1.2}
+.rule-line{
+  grid-column:3 / 13;
+  font-family:var(--font-display);font-weight:900;font-stretch:112%;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(22px,2.8vw,38px);line-height:1;
+  padding:calc(var(--b)*3) 0 0;
+}
+.rule-line i{font-style:normal;color:var(--accent)}
+.status{
+  grid-column:3 / 13;
+  display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);letter-spacing:.04em;
+}
+.status .pip{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+
+/* ---- hire ---- */
+.hire{grid-column:1 / 13;display:grid;grid-template-columns:subgrid;row-gap:0}
+.offer{
+  grid-column:span 6;
+  display:grid;grid-template-rows:auto 1fr auto;gap:calc(var(--b)*3);
+  padding:calc(var(--b)*4) calc(var(--b)*4) calc(var(--b)*4) 0;
+  border-top:1px solid var(--line-strong);
+}
+.offer.me{
+  background:var(--cobalt);
+  color:#F2ECE2;
+  padding-left:calc(var(--b)*4);
+  border-top-color:transparent;
+  margin-left:calc(-1 * clamp(16px,4vw,56px));
+  padding-left:clamp(16px,4vw,56px);
+}
+.offer.me .kick{color:rgba(242,236,226,.6)}
+.offer h3{font-size:clamp(30px,3.6vw,52px);line-height:.95;font-stretch:114%;text-transform:uppercase;letter-spacing:-.03em}
+.offer p{font-size:17px;line-height:1.55;max-width:40ch}
+.offer.me p{color:rgba(242,236,226,.82)}
+.offer.team p{color:var(--ink-dim)}
+.offer .price{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.offer .price b{font-weight:600;color:var(--accent)}
+.offer.me .price b{color:#FFB48A}
+.cta{
+  display:inline-flex;align-items:center;gap:12px;width:fit-content;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  padding:14px 18px;border:1px solid currentColor;
+}
+.cta::after{content:"→"}
+.offer.me .cta{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.offer.me .cta:hover{background:#F2ECE2;color:#061A3E;border-color:#F2ECE2}
+.offer.team .cta:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ---- elsewhere / colophon ---- */
+.foot{
+  grid-column:1 / 13;display:grid;grid-template-columns:subgrid;
+  border-top:1px solid var(--line-strong);
+  padding-top:calc(var(--b)*3);
+  row-gap:calc(var(--b)*3);
+}
+.foot .kick{grid-column:1 / 3}
+.foot ul{grid-column:3 / 7;list-style:none;margin:0;padding:0;display:grid;gap:8px;font-family:var(--font-mono);font-size:13px}
+.foot ul a{color:var(--ink-dim);border-bottom:1px solid var(--line)}
+.foot ul a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+.foot .col{grid-column:7 / 13;font-size:15px;line-height:1.6;color:var(--ink-mute);max-width:52ch}
+.foot .col b{color:var(--ink-dim);font-weight:500}
+.foot .edu{grid-column:3 / 13;font-family:var(--font-mono);font-size:12px;color:var(--ink-dim);letter-spacing:.04em;line-height:1.7}
+
+/* ---- responsive ---- */
+@media (max-width:980px){
+  .hero .plate{grid-column:5 / 13}
+  .hero .copy{grid-column:1 / 10}
+  .sec-head h2{grid-column:1 / 10}
+  .sec-head .kick{grid-column:1 / 13;margin-bottom:10px}
+  .sec-head .aside{grid-column:1 / 13;text-align:left;margin-top:8px}
+  .lede,.rule-line,.status{grid-column:1 / 13}
+  .verdict{grid-column:span 12;padding-right:0}
+  .side .label{grid-column:1 / 13;margin-bottom:calc(var(--b)*2)}
+  .tracks{grid-column:1 / 13}
+  .lane,.offer{grid-column:span 12;padding-right:0}
+  .fields .kick,.fields dl{grid-column:1 / 13}
+  .foot .kick,.foot ul,.foot .col,.foot .edu{grid-column:1 / 13}
+  .offer.me{margin-right:calc(-1 * clamp(16px,4vw,56px));padding-right:clamp(16px,4vw,56px)}
+}
+@media (max-width:640px){
+  .hero{padding-block:calc(var(--b)*4) calc(var(--b)*5)}
+  .hero .plate{grid-column:1 / 13;grid-row:1;aspect-ratio:4/5}
+  .hero .copy{grid-column:1 / 13;grid-row:2;margin-top:calc(var(--b)*3)}
+  .hero h1{font-size:clamp(38px,12vw,60px)}
+  .hero .ident{background:transparent;padding:0}
+  .track,.track.head{grid-template-columns:80px 1fr;gap:6px 14px}
+  .track .what{grid-column:2}
+  .receipt > div{border-right:0;border-bottom:1px solid var(--line);margin-right:0}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+</style>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="page">
+
+  <header class="mast">
+    <a class="brand" href="#top" aria-label="arya.wtf, home">arya<span>.</span>wtf</a>
+    <nav aria-label="Primary">
+      <a href="#record">Record</a>
+      <a href="#log">Verdicts</a>
+      <a href="#hire">Hire</a>
+      <a href="#elsewhere">Elsewhere</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- 01 HERO -->
+    <section class="hero g" aria-labelledby="h1" style="padding-top:calc(var(--b)*6)">
+      <figure class="plate" style="margin:0">
+        <img src="arya.jpg" width="1200" height="1499" alt="Arya Pradana, in headphones, against a cobalt blue background." loading="eager" fetchpriority="high">
+        <figcaption class="edge">Arya Pradana · Yogyakarta · 2026</figcaption>
+      </figure>
+      <div class="copy">
+        <p class="why">Why? Think further.</p>
+        <h1 id="h1">Building software companies since <em>2008</em>. The current one is four people doing what eighteen used&nbsp;to.</h1>
+        <p class="ident"><b>Founder of Elux Space, an AI-native design studio in Yogyakarta.</b> I help owners decide what AI should automate, what it should assist, and what it should never touch.</p>
+      </div>
+    </section>
+
+    <!-- RECEIPT -->
+    <div class="receipt" role="list" aria-label="At a glance">
+      <div role="listitem"><div class="v">2008</div><div class="k">First company, at university</div></div>
+      <div role="listitem"><div class="v">5</div><div class="k">Companies built or run</div></div>
+      <div role="listitem"><div class="v">50</div><div class="k">People at DOT, as COO</div></div>
+      <div role="listitem"><div class="v">18 → 12 → <i>4</i></div><div class="k">Elux Space, 2023 → 2026</div></div>
+      <div role="listitem"><div class="v">Jogja</div><div class="k">Yogyakarta, Indonesia</div></div>
+    </div>
+
+    <!-- 02 THREE VERDICTS -->
+    <section class="g" aria-labelledby="h-verdicts">
+      <div class="sec-head">
+        <span class="kick">The method</span>
+        <h2 id="h-verdicts">Every piece of work gets one of three verdicts</h2>
+        <div class="aside">One question, asked<br>on every task</div>
+      </div>
+      <p class="lede">Most owners ask <b>“what can AI do for us?”</b> That question has no edges, so the answer is always “everything,” and the project dies of scope. I ask a narrower one: for <em>this</em> piece of work, which pile does it belong in?</p>
+      <div class="verdicts">
+        <div class="verdict" data-v="automate">
+          <span class="tag">Verdict 1</span>
+          <h3>Automate</h3>
+          <p>Repetitive, well-defined, low-judgment. A human touching it adds cost, not quality. Build the pipeline and remove the person from the loop.</p>
+        </div>
+        <div class="verdict" data-v="assist">
+          <span class="tag">Verdict 2</span>
+          <h3>Assist</h3>
+          <p>Judgment stays with a person; the machine drafts, checks, and accelerates. Most real work lives here, and most failed AI projects tried to push it into the first pile.</p>
+        </div>
+        <div class="verdict" data-v="leave">
+          <span class="tag">Verdict 3</span>
+          <h3>Leave alone</h3>
+          <p>The work <em>is</em> the relationship, the taste, or the accountability. Automating it removes the reason the client pays you. This pile is usually the one that saves the business.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 THE RECORD -->
+    <section class="g" id="record" aria-labelledby="h-record">
+      <div class="sec-head">
+        <span class="kick">The record</span>
+        <h2 id="h-record">Eighteen years, two sides</h2>
+        <div class="aside">Side A: building for others<br>Side B: building smaller</div>
+      </div>
+      <p class="lede">A timeline, not a résumé. Every line has a year. The only entry without one is marked, and it stays marked until the year is confirmed.</p>
+
+      <div class="record" style="margin-top:calc(var(--b)*5)">
+
+        <div class="side">
+          <div class="label">Side<br>A<small>2006 — 2020</small></div>
+          <div class="tracks">
+            <div class="track">
+              <span class="yr">2006–2011</span>
+              <div class="who">Institut Teknologi Sepuluh Nopember<small>S1 · Teknik Informatika</small></div>
+              <p class="what">Informatics engineering, Surabaya.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2008</span>
+              <div class="who">IDOnesoft<small>Founder</small></div>
+              <p class="what">Hosting and software development, started in the third year of university. <b>The first company.</b></p>
+            </div>
+            <div class="track">
+              <span class="yr">2013–2015</span>
+              <div class="who">AyoWes! Web &amp; Mobile Dev<small>CEO</small></div>
+              <p class="what">Web and mobile development studio.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2015–2020</span>
+              <div class="who">DOT Indonesia<small>COO · ~50 people</small></div>
+              <p class="what">The role rotated as the company needed it. <b>First</b> sales and raising investment. <b>Then</b> admin, legal, finance and HR. <b>Then</b> the business model itself. Five years inside every function that breaks when you automate it carelessly.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2016–2018</span>
+              <div class="who">SBM ITB<small>S2 · Business</small></div>
+              <p class="what">Business school, Bandung — taken while running operations at DOT.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2020</span>
+              <div class="who">Left DOT<small>End of Side A</small></div>
+              <p class="what">Exited. The line about why is Arya’s to write.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="label">Side<br>B<small>2020 — now</small></div>
+          <div class="tracks">
+            <div class="track">
+              <span class="yr"><span class="pending">year</span></span>
+              <div class="who">Incbuss Creative<small>Video production</small></div>
+              <p class="what">Long-form video, produced and edited in-house. The creative turn.</p>
+            </div>
+            <div class="track">
+              <span class="yr">Feb 2022</span>
+              <div class="who">Elux Space<small>Founder · CEO</small></div>
+              <p class="what">A UI/UX and product design studio in Yogyakarta, remote-first from day one.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2023–2024</span>
+              <div class="who">Eighteen people<small>Peak</small></div>
+              <p class="what">The studio at its largest.</p>
+            </div>
+            <div class="track">
+              <span class="yr">2025</span>
+              <div class="who">Twelve<small>Reduced</small></div>
+              <p class="what">The year before the rebuild.</p>
+            </div>
+            <div class="track">
+              <span class="yr now">2026</span>
+              <div class="who">Four<small>Now</small></div>
+              <p class="what"><b>Revenue unchanged from 2025.</b> Rebuilt around AI instead of hiring around it. The uncomfortable part: that took decisions about people, not just tools, and every one of them is logged below.</p>
+            </div>
+            <div class="track head" aria-hidden="true">
+              <span class="yr"></span>
+              <div>
+                <div class="curve"><span>18</span><span class="arrow">→</span><span>12</span><span class="arrow">→</span><span class="four">4</span></div>
+                <div class="curve-note">Headcount at Elux Space, 2023 → 2026. The revenue claim applies to the last step only.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04 THE LOG -->
+    <section class="g" id="log" aria-labelledby="h-log">
+      <div class="sec-head">
+        <span class="kick">The log</span>
+        <h2 id="h-log">Verdicts, with the numbers attached</h2>
+        <div class="aside">One entry a week, at most<br>Each on its own page</div>
+      </div>
+      <div class="log">
+        <div class="lanes">
+          <div class="lane">
+            <span class="kick">Long form</span>
+            <h3>Verdict entries</h3>
+            <p>One real piece of work — a client project, an Elux process, a personal build, or a paid audit — sorted into a pile, with the figure before, the result after, and the thing I refused to automate. Dated, and revised in the open.</p>
+          </div>
+          <div class="lane">
+            <span class="kick">Short form</span>
+            <h3>Notes</h3>
+            <p>A paragraph, not an argument. Something seen this week that changes a verdict, or should. Notes are allowed to be wrong; entries are not.</p>
+          </div>
+        </div>
+
+        <div class="fields">
+          <span class="kick">Fixed fields</span>
+          <dl>
+            <div><dt>01</dt><dd>The work</dd></div>
+            <div><dt>02</dt><dd>Figure before</dd></div>
+            <div><dt>03</dt><dd>Verdict</dd></div>
+            <div><dt>04</dt><dd>What I refused to automate</dd></div>
+            <div><dt>05</dt><dd>Result</dd></div>
+            <div><dt>06</dt><dd>The uncomfortable part</dd></div>
+            <div><dt>07</dt><dd>Tools</dd></div>
+            <div><dt>08</dt><dd>Date · revised</dd></div>
+          </dl>
+        </div>
+
+        <p class="rule-line">No number, <i>no entry.</i> No refusal named, <i>entry unfinished.</i></p>
+        <p class="status"><span class="pip" aria-hidden="true"></span> Entry 01 written. Awaiting publication clearance.</p>
+      </div>
+    </section>
+
+    <!-- 05 HIRE -->
+    <section class="g" id="hire" aria-labelledby="h-hire">
+      <div class="sec-head">
+        <span class="kick">Hire</span>
+        <h2 id="h-hire">Two ways in</h2>
+        <div class="aside">One is me.<br>One is the studio.</div>
+      </div>
+      <div class="hire">
+        <div class="offer me">
+          <span class="kick">Hire me</span>
+          <div style="display:grid;gap:16px">
+            <h3>An AI decision audit, for owners</h3>
+            <p>I go through your actual work — not a deck about it — and sort it into the three piles. You leave with a list of what to automate, what to assist, and what to leave alone, with the reasoning written down so it survives me leaving the room.</p>
+            <p class="price">From <b>IDR 10,000,000</b></p>
+          </div>
+          <a class="cta" href="https://www.linkedin.com/in/aryapradana/">Message me on LinkedIn</a>
+        </div>
+        <div class="offer team">
+          <span class="kick">Hire the team</span>
+          <div style="display:grid;gap:16px">
+            <h3>Product and UI/UX design, by Elux Space</h3>
+            <p>The four-person studio the record above describes. Design and build for products that have to ship. Scope, quotes, and the work itself live on the studio’s own site.</p>
+            <p class="price">Quoted per project</p>
+          </div>
+          <a class="cta" href="https://elux.space">Go to elux.space</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ELSEWHERE -->
+    <section class="g" id="elsewhere" aria-labelledby="h-else">
+      <div class="foot">
+        <span class="kick" id="h-else">Elsewhere</span>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/aryapradana/" rel="me">linkedin.com/in/aryapradana</a></li>
+          <li><a href="https://github.com/arya-wtf" rel="me">github.com/arya-wtf</a></li>
+          <li><a href="https://elux.space">elux.space</a></li>
+        </ul>
+        <p class="col"><b>Colophon.</b> Set in Archivo, Newsreader and JetBrains Mono. This page looks like the back of a 1960 jazz LP sleeve on purpose: one photograph, one spot colour, and the credits typeset so they can be read. Nothing here animates. Nothing here was generated except the grain.</p>
+        <p class="edu">S1 Teknik Informatika, Institut Teknologi Sepuluh Nopember · S2 Business, SBM Institut Teknologi Bandung · Yogyakarta, Indonesia</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://arya.wtf/#person",
+      "name": "Arya Pradana",
+      "url": "https://arya.wtf/",
+      "image": "https://arya.wtf/arya.jpg",
+      "jobTitle": "Founder",
+      "description": "Founder of Elux Space, an AI-native design studio in Yogyakarta. I help owners decide what AI should automate, what it should assist, and what it should never touch.",
+      "worksFor": { "@id": "https://elux.space/#organization" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Institut Teknologi Sepuluh Nopember" },
+        { "@type": "CollegeOrUniversity", "name": "Sekolah Bisnis dan Manajemen, Institut Teknologi Bandung" }
+      ],
+      "homeLocation": { "@type": "Place", "name": "Yogyakarta, Indonesia" },
+      "sameAs": [
+        "https://www.linkedin.com/in/aryapradana/",
+        "https://github.com/arya-wtf",
+        "https://elux.space"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://elux.space/#organization",
+      "name": "Elux Space",
+      "url": "https://elux.space",
+      "founder": { "@id": "https://arya.wtf/#person" },
+      "foundingDate": "2022-02",
+      "location": { "@type": "Place", "name": "Yogyakarta, Indonesia" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arya.wtf/#website",
+      "url": "https://arya.wtf/",
+      "name": "arya.wtf",
+      "publisher": { "@id": "https://arya.wtf/#person" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://arya.wtf/#profilepage",
+      "url": "https://arya.wtf/",
+      "mainEntity": { "@id": "https://arya.wtf/#person" },
+      "isPartOf": { "@id": "https://arya.wtf/#website" }
+    }
+  ]
+}
+</script>

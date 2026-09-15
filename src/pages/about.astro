@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+import SecHead from '../components/SecHead.astro';
+import { SITE, PERSON_ID, faq } from '../lib/site';
+
+const title = 'The Record — Arya Pradana';
+const description = 'Eighteen years of building software companies in Indonesia, from a university hosting business in 2008 to a four-person AI-native design studio in Yogyakarta.';
+const jsonld = [
+  { '@type': 'ProfilePage', '@id': `${SITE}/about#profilepage`, url: `${SITE}/about`, mainEntity: { '@id': PERSON_ID }, dateModified: '2026-09-15' },
+  faq([
+    ['Where is Arya Pradana based?', 'Yogyakarta, Indonesia. Elux Space is remote-first and based there.'],
+    ['Which Arya Pradana is this?', 'The founder of Elux Space, a design studio in Yogyakarta; ITS Teknik Informatika 2006–2011; SBM ITB 2016–2018; former COO of DOT Indonesia. Several people share the name; this page is about this one.'],
+    ['What did Arya Pradana do before Elux Space?', 'Founded IDOnesoft in 2008 while at university, was CEO of AyoWes! Web & Mobile Dev 2013–2015, COO of DOT Indonesia 2015–2020, and ran Incbuss Creative, a video production house, 2020–2024.'],
+  ]),
+];
+---
+<Base title={title} description={description} path="/about" jsonld={jsonld}>
+  <section class="phero g" aria-labelledby="h1">
+    <Plate src="/img/about.webp" alt="A road of light running toward a chrome city under a striped setting sun." eager />
+    <div class="head"><span class="kick sun">The record · 2008 → 2026</span><h1 id="h1">Eighteen years, two sides</h1>
+      <p class="lede">A timeline, not a résumé. Every line has a year. <b>Side A</b> is building for other people’s companies. <b>Side B</b> is building smaller, on purpose.</p></div>
+    <div class="side" style="grid-column:9/13">Side A · 2006 — 2020<br />Side B · 2020 — now</div>
+  </section>
+
+  <section class="g" aria-labelledby="h-a">
+    <div class="sec">
+      <div class="side">
+        <div class="label" id="h-a">Side<br />A<small>2006 — 2020</small></div>
+        <div class="tracks">
+          <div class="track"><span class="yr">2006–2011</span><div class="who">Institut Teknologi Sepuluh Nopember<small>S1 · Teknik Informatika</small></div><p class="what">Informatics engineering, Surabaya.</p></div>
+          <div class="track"><span class="yr">2008</span><div class="who">IDOnesoft<small>Founder</small></div><p class="what">Hosting and software development, started in the third year of university. <b>The first company.</b></p></div>
+          <div class="track"><span class="yr">2013–2015</span><div class="who">AyoWes! Web &amp; Mobile Dev<small>CEO</small></div><p class="what">A web and mobile development studio.</p></div>
+          <div class="track"><span class="yr">2015–2020</span><div class="who">DOT Indonesia<small>COO · ~50 people</small></div><p class="what">The role rotated as the company needed it. <b>First</b> sales and raising investment. <b>Then</b> admin, legal, finance and HR. <b>Then</b> the business model itself. Five years inside every function that breaks when you automate it carelessly.</p></div>
+          <div class="track"><span class="yr">2016–2018</span><div class="who">SBM ITB<small>S2 · Business</small></div><p class="what">Business school, Bandung — taken while running operations at DOT.</p></div>
+          <div class="track"><span class="yr">2020</span><div class="who">Left DOT<small>End of Side A</small></div><p class="what">There were three of us. One partner went into politics, and the company started being run for that. I didn’t want to run it that way, so I left.</p></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="label" id="h-b">Side<br />B<small>2020 — now</small></div>
+        <div class="tracks">
+          <div class="track"><span class="yr">2020–2024</span><div class="who">Incbuss Creative<small>Founder · video production</small></div><p class="what">Long-form video, produced and edited in-house. The creative turn. Passive since 2025.</p></div>
+          <div class="track"><span class="yr">Feb 2022</span><div class="who">Elux Space<small>Founder · CEO</small></div><p class="what">A UI/UX and product design studio in Yogyakarta, remote-first from day one.</p></div>
+          <div class="track"><span class="yr">2023–2024</span><div class="who">Eighteen people<small>Peak</small></div><p class="what">The studio at its largest.</p></div>
+          <div class="track"><span class="yr">2025</span><div class="who">Twelve<small>Reduced</small></div><p class="what">The year before the rebuild.</p></div>
+          <div class="track"><span class="yr now">2026</span><div class="who">Four<small>Now</small></div><p class="what"><b>Revenue unchanged from 2025.</b> Rebuilt around AI instead of hiring around it. The uncomfortable part: that took decisions about people, not just tools. <a href="/log/elux-headcount" style="color:var(--sun-1)">The entry →</a></p></div>
+        </div>
+      </div>
+      <div class="sec-body">
+        <div class="span-4"><div class="curve"><span>18</span><span class="arrow">→</span><span>12</span><span class="arrow">→</span><span class="four">4</span></div><p class="curve-note">Headcount at Elux Space, 2023 → 2026. The revenue claim applies to the last step only.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-faq">
+    <div class="sec">
+      <SecHead coord="Disambiguation" title="Which Arya Pradana is this?" aside="There are several" id="h-faq" />
+      <div class="faq">
+        <details open><summary>Which Arya Pradana is this?</summary><div class="a">The founder of Elux Space, a design studio in Yogyakarta. ITS Teknik Informatika 2006–2011, SBM ITB 2016–2018, former COO of DOT Indonesia. Several people share the name — a film producer, a musician, and others in tech. This site is about this one.</div></details>
+        <details><summary>Where is he based?</summary><div class="a">Yogyakarta, Indonesia. Not Malang, not Jakarta. Elux Space is remote-first and based there.</div></details>
+        <details><summary>What did he do before Elux Space?</summary><div class="a">Founded IDOnesoft in 2008 while at university; CEO of AyoWes! Web &amp; Mobile Dev, 2013–2015; COO of DOT Indonesia, 2015–2020; founded Incbuss Creative, a video production house, 2020–2024.</div></details>
+      </div>
+    </div>
+  </section>
+</Base>

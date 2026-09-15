@@ -1,0 +1,8 @@
+---
+// A page plate: generated illustration with the halftone ramp and bottom fade applied in CSS.
+interface Props { src: string; alt: string; width?: number; height?: number; eager?: boolean; class?: string; style?: string }
+const { src, alt, width = 1200, height = 675, eager = false, class: cls = 'plate', style } = Astro.props;
+---
+<figure class={cls} style={`margin:0;${style ?? ''}`}>
+  <img src={src} width={width} height={height} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" />
+</figure>

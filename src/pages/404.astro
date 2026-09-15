@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Not found — arya.wtf" description="That page isn’t here." path="/404" noindex>
+  <section class="g" style="padding-top:calc(var(--b)*8)">
+    <div class="sec">
+      <div class="sec-body" style="grid-column:1/-1">
+        <div class="span-8" style="display:grid;gap:16px">
+          <p class="kick sun">404</p>
+          <h1 style="font-size:clamp(30px,4.4vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:-.03em">Not here.</h1>
+          <p class="lede">Either it moved or it never existed. <a href="/" style="color:var(--sun-1)">Home →</a> · <a href="/log" style="color:var(--sun-1)">The log →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

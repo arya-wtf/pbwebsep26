@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+import SecHead from '../components/SecHead.astro';
+import { SITE, PERSON_ID } from '../lib/site';
+import { WORK } from '../lib/work';
+
+const title = 'Work — Arya Pradana';
+const description = 'Software and tools built by Arya Pradana: open-source agent skills, MCP servers, an AI image studio, and the internal platform behind Elux Space.';
+const jsonld = [{
+  '@type': 'CollectionPage', '@id': `${SITE}/work#collection`, url: `${SITE}/work`, name: 'Work', dateModified: '2026-09-15',
+  mainEntity: { '@type': 'ItemList', itemListElement: WORK.map((w, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'SoftwareSourceCode', name: w.name, description: w.desc, ...(w.url ? { codeRepository: w.url } : {}), author: { '@id': PERSON_ID } } })) },
+}];
+---
+<Base title={title} description={description} path="/work" jsonld={jsonld}>
+  <section class="phero g" aria-labelledby="h1">
+    <Plate src="/img/work.webp" alt="A hand-built radio dish on terraced hillside at dusk, tilted toward a striped orange sun." eager />
+    <div class="head"><span class="kick sun">Work</span><h1 id="h1">Built, shipped, still running</h1>
+      <p class="lede">Two kinds of work. <b>Own builds</b> — tools I ship as a first-class output, not a side effect. And <b>the studio’s work</b>, which lives where the studio does.</p></div>
+    <div class="side" style="grid-column:9/13">Small, fast, shipped</div>
+  </section>
+
+  <section class="g" aria-labelledby="h-own">
+    <div class="sec">
+      <SecHead coord="01" title="Own builds" aside="Public unless marked" id="h-own" />
+      <div class="list">
+        {WORK.map((w) => (
+          <div class="row">
+            <span class="id">{w.year}</span>
+            {w.url ? <a class="name" href={w.url}>{w.name}<small>{w.kind}</small></a> : <div class="name">{w.name}<small>{w.kind}</small></div>}
+            <p class="desc">{w.desc}</p>
+            <span class="meta">{w.meta}</span>
+          </div>
+        ))}
+      </div>
+      <div class="sec-body"><p class="lede span-7">A long tail of landing pages, dashboards and single-file tools sits behind these on <a href="https://github.com/arya-wtf" style="color:var(--sun-1)">github.com/arya-wtf</a>.</p></div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-studio">
+    <div class="sec">
+      <SecHead coord="02" title="The studio’s work" aside="Elux Space" id="h-studio" />
+      <div class="sec-body">
+        <div class="prose span-7">
+          <p>Client projects, case studies and the team are on the studio’s own site. This page doesn’t duplicate them — one place for the work, one place for the person who runs it.</p>
+          <p><a class="btn" href="https://elux.space">Client work on elux.space</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

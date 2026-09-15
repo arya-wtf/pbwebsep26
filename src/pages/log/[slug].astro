@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { SITE, PERSON_ID, ORG_ID, iso } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('log');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const V = { automate: 'Automate', assist: 'Assist', leave: 'Leave alone' } as const;
+const path = `/log/${entry.id}`;
+const jsonld = [{
+  '@type': 'Article', '@id': `${SITE}${path}#article`, headline: d.title, description: d.summary, author: { '@id': PERSON_ID },
+  datePublished: iso(d.date), dateModified: iso(d.revised ?? d.date), url: `${SITE}${path}`, inLanguage: 'en',
+  about: { '@id': ORG_ID }, isPartOf: { '@id': `${SITE}/log#collection` },
+}];
+---
+<Base title={`${d.title} — a verdict`} description={d.summary} path={path} jsonld={jsonld} noindex={d.draft}>
+  <section class="g" aria-labelledby="h1" style="padding-top:calc(var(--b)*6)">
+    <div class="sec">
+      <div class="sec-body" style="grid-column:1/-1">
+        <div class="span-10" style="display:grid;gap:16px">
+          <p class="kick sun">Entry · {iso(d.date)} · <span class={`pill v-${d.verdict}`}>{V[d.verdict]}</span> {d.draft && <span class="pill draft">Draft — Arya to finish</span>}</p>
+          <h1 id="h1" style="font-size:clamp(30px,4.4vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:-.03em">{d.title}</h1>
+          <p class="lede">{d.summary}</p>
+        </div>
+      </div>
+      <div class="entry">
+        <dl class="spec">
+          <div><dt>01 · The work</dt><dd>{d.fields.work}</dd></div>
+          <div><dt>02 · Figure before</dt><dd>{d.fields.before}</dd></div>
+          <div><dt>03 · Verdict</dt><dd>{d.fields.verdict}</dd></div>
+          <div><dt>04 · Refused to automate</dt><dd>{d.fields.refused}</dd></div>
+          <div><dt>05 · Result</dt><dd>{d.fields.result}</dd></div>
+          <div><dt>06 · Uncomfortable part</dt><dd>{d.fields.uncomfortable}</dd></div>
+          <div><dt>07 · Tools</dt><dd>{d.fields.tools}</dd></div>
+          <div><dt>08 · Date · revised</dt><dd>{iso(d.date)} · {d.revised ? iso(d.revised) : '—'}</dd></div>
+        </dl>
+        <div class="body">
+          <div class="prose"><Content /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,15 @@
+---
+import Sun from './Sun.astro';
+import { NAV } from '../lib/site';
+interface Props { current: string }
+const { current } = Astro.props;
+const isCurrent = (href: string) => (href === '/' ? current === '/' : current.startsWith(href));
+---
+<header class="mast">
+  <a class="brand" href="/" aria-label="arya.wtf, home"><Sun id="b" />arya<em>.</em>wtf</a>
+  <nav aria-label="Primary">
+    {NAV.map(([href, label]) => (
+      <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
+    ))}
+  </nav>
+</header>

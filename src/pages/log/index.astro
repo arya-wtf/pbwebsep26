@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Plate from '../../components/Plate.astro';
+import SecHead from '../../components/SecHead.astro';
+import Fields from '../../components/Fields.astro';
+import { getCollection } from 'astro:content';
+import { SITE, iso } from '../../lib/site';
+
+const entries = (await getCollection('log')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const V = { automate: 'Automate', assist: 'Assist', leave: 'Leave alone' } as const;
+const title = 'The Log — verdicts, with the numbers attached';
+const description = 'Dated verdict entries by Arya Pradana: one real piece of work, sorted into automate, assist or leave alone, with the figure before, the result, and what was refused.';
+const jsonld = [{
+  '@type': 'CollectionPage', '@id': `${SITE}/log#collection`, url: `${SITE}/log`, name: 'The Log', dateModified: iso(entries[0]?.data.date ?? new Date()),
+  mainEntity: { '@type': 'ItemList', itemListElement: entries.filter((e) => !e.data.draft).map((e, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/log/${e.id}` })) },
+}];
+---
+<Base title={title} description={description} path="/log" jsonld={jsonld}>
+  <section class="phero g" aria-labelledby="h1">
+    <Plate src="/img/log.webp" alt="A vintage line printer in a dark control room spooling a long ribbon of blank paper." eager />
+    <div class="head"><span class="kick sun">The log</span><h1 id="h1">Verdicts, with the numbers attached</h1>
+      <p class="lede">Two kinds of unit. <b>Entries</b> are long: one real piece of work, sorted, with the figure before and after and the thing I refused to automate. <b>Notes</b> are a paragraph: something seen this week that changes a verdict, or should. Notes are allowed to be wrong. Entries are not.</p></div>
+    <div class="side" style="grid-column:9/13">One entry a week, at most<br />Each on its own page · <a href="/log/rss.xml">RSS</a></div>
+  </section>
+
+  <section class="g" aria-labelledby="h-entries">
+    <div class="sec">
+      <SecHead coord="Entries" title="All entries" aside="Newest first" id="h-entries" />
+      <div class="list">
+        {entries.map((e) => (
+          <div class="row">
+            <span class="id">{iso(e.data.date)}</span>
+            <a class="name" href={`/log/${e.id}`}>{e.data.title}<small>{e.data.source}</small></a>
+            <p class="desc">{e.data.summary}</p>
+            <span class="meta"><span class={`pill v-${e.data.verdict}`}>{V[e.data.verdict]}</span> {e.data.draft && <span class="pill draft">Draft</span>}</span>
+          </div>
+        ))}
+      </div>
+      <div class="sec-body"><p class="lede span-7">Entry 01 — a teardown of a well-known Indonesian designer’s site — is written and awaiting publication clearance. It will appear here when it does.</p></div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-fields">
+    <div class="sec">
+      <SecHead coord="Format" title="Every entry, the same eight fields" aside="So they can be compared" id="h-fields" />
+      <Fields />
+      <div class="sec-body"><p class="rule-line span-10">No number, <i>no entry.</i> No refusal named, <i>entry unfinished.</i></p></div>
+    </div>
+  </section>
+</Base>

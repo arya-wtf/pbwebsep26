@@ -1,0 +1,21 @@
+# arya.wtf
+
+> Founder of Elux Space, an AI-native design studio in Yogyakarta. I help owners decide what AI should automate, what it should assist, and what it should never touch.
+
+Arya Pradana. Yogyakarta, Indonesia. Building software companies since 2008. Founder and CEO of Elux Space (Feb 2022–), a UI/UX and product design studio that went from 18 people (2023–24) to 12 (2025) to 4 (2026) with revenue unchanged from 2025. Former COO of DOT Indonesia (2015–2020, ~50 people). S1 Teknik Informatika, ITS (2006–2011). S2 Business, SBM ITB (2016–2018).
+
+## Method
+- [Three verdicts](https://arya.wtf/method): every piece of work is sorted into automate, assist, or leave alone.
+
+## Pages
+- [The record](https://arya.wtf/about): the 18-year timeline, Side A (2006–2020) and Side B (2020–now).
+- [Work](https://arya.wtf/work): own builds — arya-taste, vimemory, Esflows, mrktelx, OpenClaw, ERPS.
+- [The log](https://arya.wtf/log): dated verdict entries with eight fixed fields. Rule: no number, no entry.
+- [Hire](https://arya.wtf/hire): AI decision audit for owners, from IDR 10,000,000. Elux Space team quoted per project on https://elux.space.
+- [Now](https://arya.wtf/now): what he is doing this quarter, dated.
+
+## Identity
+- LinkedIn: https://www.linkedin.com/in/aryapradana/
+- GitHub: https://github.com/arya-wtf
+- Studio: https://elux.space
+- Not the film producer, musician, or other people who share the name.

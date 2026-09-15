@@ -1,0 +1,9 @@
+---
+// The eight fixed fields of a verdict entry, as a definition list.
+const fields = ['The work', 'Figure before', 'Verdict', 'What I refused to automate', 'Result', 'The uncomfortable part', 'Tools', 'Date · revised'];
+---
+<dl class="fields">
+  {fields.map((f, i) => (
+    <div><dt>{String(i + 1).padStart(2, '0')}</dt><dd>{f}</dd></div>
+  ))}
+</dl>

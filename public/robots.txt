@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arya.wtf/sitemap-index.xml

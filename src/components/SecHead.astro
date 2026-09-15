@@ -1,0 +1,9 @@
+---
+interface Props { coord: string; title: string; aside?: string; id: string }
+const { coord, title, aside = '', id } = Astro.props;
+---
+<div class="sec-head">
+  <span class="coord">{coord}</span>
+  <h2 id={id}>{title}</h2>
+  <div class="aside" set:html={aside} />
+</div>

@@ -1,0 +1,21 @@
+---
+interface Props { detailed?: boolean }
+const { detailed = false } = Astro.props;
+---
+<div class="verdicts">
+  <div class="verdict" data-v="automate">
+    <span class="tag">Verdict 1</span><h3>Automate</h3>
+    <p>Repetitive, well-defined, low-judgment. A human touching it adds cost, not quality.{detailed && ' Build the pipeline and remove the person from the loop.'}</p>
+    {detailed && <ul><li>The input is structured or can be made structured</li><li>A wrong output is cheap to catch</li><li>Nobody’s name is on the result</li></ul>}
+  </div>
+  <div class="verdict" data-v="assist">
+    <span class="tag">Verdict 2</span><h3>Assist</h3>
+    <p>Judgment stays with a person; the machine drafts, checks and accelerates. Most real work lives here{detailed ? ' — and most failed AI projects tried to push it into the first pile.' : '.'}</p>
+    {detailed && <ul><li>A person still signs off</li><li>The first draft is the expensive part</li><li>Speed matters more than perfection</li></ul>}
+  </div>
+  <div class="verdict" data-v="leave">
+    <span class="tag">Verdict 3</span><h3>Leave alone</h3>
+    <p>The work <em>is</em> the relationship, the taste, or the accountability. Automating it removes the reason the client pays you.{detailed && ' This pile is usually the one that saves the business.'}</p>
+    {detailed && <ul><li>The client is buying a person’s judgment</li><li>A mistake costs trust, not money</li><li>It’s the thing competitors can’t copy</li></ul>}
+  </div>
+</div>

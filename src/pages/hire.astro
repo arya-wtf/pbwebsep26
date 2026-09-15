@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+import SecHead from '../components/SecHead.astro';
+import { SITE, PERSON_ID, faq } from '../lib/site';
+
+const title = 'Hire — AI decision audit for owners, from IDR 10,000,000';
+const description = 'Hire Arya Pradana for an AI decision audit — a sort of your actual work into automate, assist and leave alone — from IDR 10,000,000. Or hire the Elux Space team for product and UI/UX design.';
+const jsonld = [
+  { '@type': 'Service', '@id': `${SITE}/hire#audit`, name: 'AI decision audit', serviceType: 'Consulting', provider: { '@id': PERSON_ID }, areaServed: 'Indonesia', url: `${SITE}/hire`,
+    description: "A sort of an owner's actual work into three piles — automate, assist, leave alone — with the reasoning written down.",
+    offers: { '@type': 'Offer', priceSpecification: { '@type': 'PriceSpecification', price: '10000000', priceCurrency: 'IDR', minPrice: '10000000' }, availability: 'https://schema.org/InStock' } },
+  faq([
+    ['Who is the audit for?', 'Owners of small companies who are being sold AI and want a decision, not a demo.'],
+    ['What do I get?', 'Your work sorted into automate, assist and leave alone, with the reasoning written down and the refusals named.'],
+    ['Is this the same as hiring Elux Space?', 'No. The audit is Arya, alone. Elux Space is the four-person design studio, quoted per project on elux.space.'],
+  ]),
+];
+---
+<Base title={title} description={description} path="/hire" jsonld={jsonld}>
+  <section class="phero g" aria-labelledby="h1">
+    <Plate src="/img/hire.webp" alt="A tall signal beacon sending one orange beam into a cobalt night sky, two figures at its base." eager />
+    <div class="head"><span class="kick sun">Hire</span><h1 id="h1">Two ways in</h1>
+      <p class="lede">One is me. One is the studio. They are priced differently, scoped differently, and they don’t compete — the audit decides <em>what</em> to build; the studio builds it.</p></div>
+    <div class="side" style="grid-column:9/13">Audit · from IDR 10,000,000<br />Studio · per project</div>
+  </section>
+
+  <section class="g" aria-labelledby="h-offers">
+    <div class="sec">
+      <div class="offers">
+        <div class="offer me"><span class="kick">Hire me</span>
+          <div style="display:grid;gap:16px"><h3 id="h-offers">An AI decision audit, for owners</h3>
+            <p>I go through your actual work — not a deck about it — and sort it into the three piles. You leave with:</p>
+            <ul><li>Every recurring piece of work, with its verdict: automate, assist, or leave alone</li><li>The reasoning for each, written down so it survives me leaving the room</li><li>The refusals — the things I’d tell you <em>not</em> to automate, and why</li></ul>
+            <p class="price">From <b>IDR 10,000,000</b></p></div>
+          <a class="btn sun" href="https://www.linkedin.com/in/aryapradana/">Message me on LinkedIn</a></div>
+        <div class="offer team"><span class="kick">Hire the team</span>
+          <div style="display:grid;gap:16px"><h3>Product and UI/UX design, by Elux Space</h3>
+            <p>The four-person studio the record describes. Design and build for products that have to ship. Scope, quotes and the work itself live on the studio’s own site.</p>
+            <p class="price">Quoted per project</p></div>
+          <a class="btn" href="https://elux.space">Go to elux.space</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="g" aria-labelledby="h-faq">
+    <div class="sec">
+      <SecHead coord="Questions" title="Before you message" aside="Short answers" id="h-faq" />
+      <div class="faq">
+        <details open><summary>Who is the audit for?</summary><div class="a">Owners of small companies who are being sold AI and want a decision, not a demo. If you already know exactly what to build, you don’t need this — go to the studio.</div></details>
+        <details><summary>What do I get?</summary><div class="a">Your work sorted into automate, assist and leave alone, with the reasoning written down and the refusals named. The format is the same eight fields every entry in <a href="/log" style="color:var(--sun-1)">the log</a> uses, so you can see what you’re buying before you buy it.</div></details>
+        <details><summary>Is this the same as hiring Elux Space?</summary><div class="a">No. The audit is me, alone. Elux Space is the four-person design studio, quoted per project on elux.space. The audit often ends with a list of things worth building; the studio is one of the places you could build them.</div></details>
+      </div>
+    </div>
+  </section>
+</Base>

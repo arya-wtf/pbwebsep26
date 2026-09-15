@@ -1,0 +1,53 @@
+---
+import '@fontsource-variable/unbounded';
+import '@fontsource-variable/archivo';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+import '../styles/global.css';
+import Mast from '../components/Mast.astro';
+import Foot from '../components/Foot.astro';
+import { SITE, baseGraph } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;          // canonical path, e.g. "/about"
+  jsonld?: object[];     // page-specific nodes, merged into the shared @graph
+  noindex?: boolean;
+  ogImage?: string;
+}
+const { title, description, path, jsonld = [], noindex = false, ogImage = '/img/og.jpg' } = Astro.props;
+const canonical = new URL(path, SITE).href;
+const graph = { '@context': 'https://schema.org', '@graph': [...baseGraph(), ...jsonld] };
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="arya.wtf" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, SITE).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0A0A12" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="arya.wtf — the log" href="/log/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="page">
+      <Mast current={path} />
+      <main><slot /></main>
+      <Foot />
+    </div>
+  </body>
+</html>
